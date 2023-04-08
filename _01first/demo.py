@@ -13,8 +13,7 @@ headers = {
     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
 }
 
-data = '{"utm":"sites_group_front.2ef5001f.0.0.ea6f6640d5cb11ed9547cf4018e15eea","categoryCode":"GovernmentProcurement","pageSize":15,"pageNo":1}'
-
+data = '{"utm":"sites_group_front.188479ff.0.0.48148460d60811ed992ee5ef25d2e7eb","categoryCode":"GovernmentProcurement","pageSize":15,"pageNo":1}'
 response = requests.post(url, headers=headers, data=data)
 
 print(response.text)
