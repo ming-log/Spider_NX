@@ -22,29 +22,29 @@ import requests
 
 # -------------
 # 获取data
-# url = 'https://vipapi.qimingpian.cn/DataList/productListVip'
-# headers = {
-#     'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36',
-# }
-# data = {
-#     'time_interval': '',
-#     'tag': '',
-#     'tag_type': '',
-#     'province': '',
-#     'lunci': '',
-#     'page': 1,
-#     'num': 20,
-#     'unionid': ''
-# }
-#
-# string_ = requests.post(url, headers=headers, data=data).json()['encrypt_data']
-#
-# # 调用JS代码进行反解密
-# with open('demo3.js', 'r', encoding='UTF-8') as f:
-#     jscode = f.read()
-#
-# ctx = execjs.compile(jscode).call('s', string_).replace('\/', '/')
-# print(ctx.encode("utf-8").decode("unicode_escape"))
+url = 'https://vipapi.qimingpian.cn/DataList/productListVip'
+headers = {
+    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36',
+}
+data = {
+    'time_interval': '',
+    'tag': '',
+    'tag_type': '',
+    'province': '',
+    'lunci': '',
+    'page': 1,
+    'num': 20,
+    'unionid': ''
+}
+
+string_ = requests.post(url, headers=headers, data=data).json()['encrypt_data']
+
+# 调用JS代码进行反解密
+with open('demo3.js', 'r', encoding='UTF-8') as f:
+    jscode = f.read()
+
+ctx = execjs.compile(jscode).call('s', string_).replace('\/', '/')
+print(ctx.encode("utf-8").decode("unicode_escape"))
 
 # -------------------
 

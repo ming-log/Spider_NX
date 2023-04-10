@@ -30,6 +30,6 @@ with open('demo4.js', 'r', encoding='UTF-8') as f:
     jscode = f.read()
 
 ctx = execjs.compile(jscode).call('h', data)
-[print(i['QY_REGION'])for i in json.loads(ctx)['data']['list']]
+print(ctx)
 
 # 第一次运行报错，错误参考 https://blog.csdn.net/Liquor6/article/details/120782193 解决
