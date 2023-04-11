@@ -5,6 +5,8 @@
 @Date: 2023/4/11-19:28
 @Desc: 
 """
+# 目标网址：https://sale.1688.com/factory/category.html?spm=a260k.22464671.home2019category.1.69517a6eFclvLv&mainId=10166
+# get请求参数加密
 import time
 import execjs
 
