@@ -1,3 +1,44 @@
+const  dckYN576ESnf = "olhVqQ5WBvsEFplY";//DESkey，可自定义
+const  dciDpkLDD9nW = "pbHwGfGn7DArQpV8";//密钥偏移量IV，可自定义
+
+var BASE64 = {
+    encrypt: function(text) {
+        var b = new Base64();
+        return b.encode(text);
+    },
+    decrypt: function(text) {
+        var b = new Base64();
+        return b.decode(text);
+    }
+};
+
+var DES = {
+ encrypt: function(text, key, iv){
+    var secretkey = (CryptoJS.MD5(key).toString()).substr(0, 16);
+    var secretiv = (CryptoJS.MD5(iv).toString()).substr(24, 8);
+    secretkey = CryptoJS.enc.Utf8.parse(secretkey);
+    secretiv = CryptoJS.enc.Utf8.parse(secretiv);
+    var result = CryptoJS.DES.encrypt(text, secretkey, {
+      iv: secretiv,
+      mode: CryptoJS.mode.CBC,
+      padding: CryptoJS.pad.Pkcs7
+    });
+    return result.toString();
+ },
+ decrypt: function(text, key, iv){
+    var secretkey = (CryptoJS.MD5(key).toString()).substr(0, 16);
+    var secretiv = (CryptoJS.MD5(iv).toString()).substr(24, 8);
+    secretkey = CryptoJS.enc.Utf8.parse(secretkey);
+    secretiv = CryptoJS.enc.Utf8.parse(secretiv);
+    var result = CryptoJS.DES.decrypt(text, secretkey, {
+      iv: secretiv,
+      mode: CryptoJS.mode.CBC,
+      padding: CryptoJS.pad.Pkcs7
+    });
+    return result.toString(CryptoJS.enc.Utf8);
+  }
+};
+
 function Base64() {
     _keyStr = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=",
     this.encode = function(a) {
@@ -1810,236 +1851,38 @@ CryptoJS.mode.ECB = function() {
 )();
 
 
-const  askjP0K0Ecjm = "aOaYoMoW7AwBSmxG";//AESkey，可自定义
-const  asiLRMRDL9pV = "bXWosDHveISHgj1I";//密钥偏移量IV，可自定义
-
-const  ack85ks3bzEW = "dXsgEmzuHDWqtTlW";//AESkey，可自定义
-const  aci4aBJbREHZ = "foisjqLLAwzVSn5S";//密钥偏移量IV，可自定义
-
-const  dsk9RLyVriko = "hFda2VNv7xC5gUOG";//DESkey，可自定义
-const  dsiBxZ8Nr7qR = "xI4A6tFnw0kSb17F";//密钥偏移量IV，可自定义
-
-const  dckoPmot2V3A = "od8QTMxAesZLcgwI";//DESkey，可自定义
-const  dcijQkedEzd4 = "po5ntPaGNSvJypwE";//密钥偏移量IV，可自定义
-
-const aes_local_key = 'emhlbnFpcGFsbWtleQ==';
-const aes_local_iv = 'emhlbnFpcGFsbWl2';
-
-var BASE64 = {
-    encrypt: function(text) {
-        var b = new Base64();
-        return b.encode(text);
-    },
-    decrypt: function(text) {
-        var b = new Base64();
-        return b.decode(text);
-    }
-};
-
-var DES = {
- encrypt: function(text, key, iv){
-    var secretkey = (CryptoJS.MD5(key).toString()).substr(0, 16);
-    var secretiv = (CryptoJS.MD5(iv).toString()).substr(24, 8);
-    secretkey = CryptoJS.enc.Utf8.parse(secretkey);
-    secretiv = CryptoJS.enc.Utf8.parse(secretiv);
-    var result = CryptoJS.DES.encrypt(text, secretkey, {
-      iv: secretiv,
-      mode: CryptoJS.mode.CBC,
-      padding: CryptoJS.pad.Pkcs7
-    });
-    return result.toString();
- },
- decrypt: function(text, key, iv){
-    var secretkey = (CryptoJS.MD5(key).toString()).substr(0, 16);
-    var secretiv = (CryptoJS.MD5(iv).toString()).substr(24, 8);
-    secretkey = CryptoJS.enc.Utf8.parse(secretkey);
-    secretiv = CryptoJS.enc.Utf8.parse(secretiv);
-    var result = CryptoJS.DES.decrypt(text, secretkey, {
-      iv: secretiv,
-      mode: CryptoJS.mode.CBC,
-      padding: CryptoJS.pad.Pkcs7
-    });
-    return result.toString(CryptoJS.enc.Utf8);
-  }
-};
-
-var AES = {
-  encrypt: function(text, key, iv) {
-    var secretkey = (CryptoJS.MD5(key).toString()).substr(16, 16);
-    var secretiv = (CryptoJS.MD5(iv).toString()).substr(0, 16);
-    // console.log('real key:', secretkey);
-    // console.log('real iv:', secretiv);
-    secretkey = CryptoJS.enc.Utf8.parse(secretkey);
-    secretiv = CryptoJS.enc.Utf8.parse(secretiv);
-    var result = CryptoJS.AES.encrypt(text, secretkey, {
-      iv: secretiv,
-      mode: CryptoJS.mode.CBC,
-      padding: CryptoJS.pad.Pkcs7
-    });
-    return result.toString();
-  },
-  decrypt: function(text, key, iv) {
-    var secretkey = (CryptoJS.MD5(key).toString()).substr(16, 16);
-    var secretiv = (CryptoJS.MD5(iv).toString()).substr(0, 16);
-    secretkey = CryptoJS.enc.Utf8.parse(secretkey);
-    secretiv = CryptoJS.enc.Utf8.parse(secretiv);
-    var result = CryptoJS.AES.decrypt(text, secretkey, {
-      iv: secretiv,
-      mode: CryptoJS.mode.CBC,
-      padding: CryptoJS.pad.Pkcs7
-    });
-    return result.toString(CryptoJS.enc.Utf8);
-  }
-};
-
-var localStorageUtil = {
-  save: function(name, value) {
-    var text = JSON.stringify(value);
-    text = BASE64.encrypt(text);
-    text = AES.encrypt(text, aes_local_key, aes_local_iv);
-    try {
-      localStorage.setItem(name, text);
-    } catch (oException) {
-      if (oException.name === 'QuotaExceededError') {
-        console.log('Local limit exceeded');
-        localStorage.clear();
-        localStorage.setItem(name, text);
-      }
-    }
-  },
-  check: function(name) {
-    return localStorage.getItem(name);
-  },
-  getValue: function(name) {
-    var text = localStorage.getItem(name);
-    var result = null;
-    if (text) {
-      text = AES.decrypt(text, aes_local_key, aes_local_iv);
-      text = BASE64.decrypt(text);
-      result = JSON.parse(text);
-    }
-    return result;
-  },
-  remove: function(name) {
-    localStorage.removeItem(name);
-  }
-};
-
-// console.log('base64', BASE64.encrypt('key'));
-
-function dbmUn71ArMB(p3iffbh) {
-  p3iffbh = AES.decrypt(p3iffbh, askjP0K0Ecjm, asiLRMRDL9pV);
-  return p3iffbh;
-}
-
-function d2dITh3DQV(p3iffbh) {
-  p3iffbh = DES.decrypt(p3iffbh, dsk9RLyVriko, dsiBxZ8Nr7qR);
-  return p3iffbh;
-}
-
-function gHmOPhfO9w28k8j8(key, period) {
-    if (typeof period === 'undefined') {
-        period = 0;
-    }
-    var d = DES.encrypt(key);
-    d = BASE64.encrypt(key);
-    var data = localStorageUtil.getValue(key);
-    if (data) { // 判断是否过期
-        const time = data.time;
-        const current = new Date().getTime();
-        if (new Date().getHours() >= 0 && new Date().getHours() < 5 && period > 1) {
-            period = 1;
-        }
-        if (current - (period * 60 * 60 * 1000) > time) { // 更新
-           data = null;
-        }
-        // 防止1-5点用户不打开页面，跨天的情况
-        if (new Date().getHours() >= 5 && new Date(time).getDate() !== new Date().getDate() && period === 24) {
-           data = null;
-        }
-    }
-    return data;
-}
-
-function osKVLNoQxE(obj) {
-    var newObject = {};
-    Object.keys(obj).sort().map(function(key){
-      newObject[key] = obj[key];
-    });
-    return newObject;
-}
-function dDhmsdwI4OpOEZ(data) {
-    data = BASE64.decrypt(data);
-    data = DES.decrypt(data, dsk9RLyVriko, dsiBxZ8Nr7qR);
-    data = AES.decrypt(data, askjP0K0Ecjm, asiLRMRDL9pV);
-    data = BASE64.decrypt(data);
-    return data;
-}
-var pZE0VTC2VTGvLc = (function(){
-
-function osKVLNoQxE(obj){
-    var newObject = {};
-    Object.keys(obj).sort().map(function(key){
-        newObject[key] = obj[key];
-    });
-    return newObject;
-}
-return function(mlgBoSfB0, ocoJtw){
-    var a7Sw = '05edd3a7c97631a722d25f7392373b03';
-    var cH7Ck = 'WEB';
-    var tpvWm1S = new Date().getTime();
-
-    var p3iffbh = {
-      appId: a7Sw,
-      method: mlgBoSfB0,
-      timestamp: tpvWm1S,
-      clienttype: cH7Ck,
-      object: ocoJtw,
-      secret: hex_md5(a7Sw + mlgBoSfB0 + tpvWm1S + cH7Ck + JSON.stringify(osKVLNoQxE(ocoJtw)))
-    };
-    p3iffbh = BASE64.encrypt(JSON.stringify(p3iffbh));
-    p3iffbh = AES.encrypt(p3iffbh, ack85ks3bzEW, aci4aBJbREHZ);
-    return p3iffbh;
-};
-})();
-
-function sXYHJDFvLt8iFrIJ(mlgBoSfB0, o2GoICK0z9, cJV1q1vh9, po0O3oB) {
-    const kEHP = hex_md5(mlgBoSfB0 + JSON.stringify(o2GoICK0z9));
-
-    const dVDuy = gHmOPhfO9w28k8j8(kEHP, po0O3oB);
-    if (!dVDuy) {
-        var p3iffbh = pZE0VTC2VTGvLc(mlgBoSfB0, o2GoICK0z9);
-        $.ajax({
-            url: 'api/historyapi.php',
-            data: { hX4UCGalf: p3iffbh },
-            type: "post",
-            success: function (dVDuy) {
-                dVDuy = dDhmsdwI4OpOEZ(dVDuy);
-                ocoJtw = JSON.parse(dVDuy);
-                if (ocoJtw.success) {
-                    if (po0O3oB > 0) {
-                      ocoJtw.result.time = new Date().getTime();
-                      localStorageUtil.save(kEHP, ocoJtw.result);
-                    }
-                    cJV1q1vh9(ocoJtw.result);
-                } else {
-                    console.log(ocoJtw.errcode, ocoJtw.errmsg);
-                }
-            }
+var plW4lZmjzlWMT = (function(){
+    function osj9iEZHJc(obj){
+        var newObject = {};
+        Object.keys(obj).sort().map(function(key){
+            newObject[key] = obj[key];
         });
-    } else {
-        cJV1q1vh9(dVDuy);
+        return newObject;
     }
-}
+    return function(mB9b7M6tO, om4kVD){
+        var aZdp = '440fef06bb6b06f512e734f88a0a93f4';
+        var cUbnX = 'WEB';
+        var tvFAcof = new Date().getTime();
+
+        var pj4Wtbc = {
+          appId: aZdp,
+          method: mB9b7M6tO,
+          timestamp: tvFAcof,
+          clienttype: cUbnX,
+          object: om4kVD,
+          secret: hex_md5(aZdp + mB9b7M6tO + tvFAcof + cUbnX + JSON.stringify(osj9iEZHJc(om4kVD)))
+        };
+        pj4Wtbc = BASE64.encrypt(JSON.stringify(pj4Wtbc));
+        pj4Wtbc = DES.encrypt(pj4Wtbc, dckYN576ESnf, dciDpkLDD9nW);
+        return pj4Wtbc;
+    };
+    })();
 
 
+mB9b7M6tO = 'GETDAYDATA'
 
-mHTBGYKS9 = 'GETDAYDATA'
+oN4hWX0iyo = {city: '武汉', month: '201608'}
 
-oGX3TKciee = {city: '武汉', month: '201302'}
+var pj4Wtbc = plW4lZmjzlWMT(mB9b7M6tO, oN4hWX0iyo);
 
-var pbcsehF = pZE0VTC2VTGvLc(mHTBGYKS9, oGX3TKciee);
-
-console.log(pbcsehF)
-"QxN3/LVj/PbERgzAQn+aUC/wuhyaIdoQ+z/coGPjJWcqRe3JFmZUzR+seu/gfkC5vKq3t0UIvNxNnslpCNNnSRlm1D2utIFTHlh8FMJd6UwU6l+sXKPh75sVd+Hc7iPhP7s4C1cD0mRNUrVGNqZJO6oVsEFNYIBG3B1ys5B3R2QTxqTRfESxr6LA/NdN03yWwuAolSSf4dEUKT/yw/yEGHWumQqc/fbBQwA8O6xnR7sllqMOTZj85epRTwqZAoQBABNvpkqDIluvxJTtLUkxKO6tIyE03Vu+CV+L4iTncASqTtrZH867gcbJ/1IZlYNK0nUYiqX/5hXyD4n5Izsy0DsNCmzxVmggHxZEg3pQD9o="
-"QxN3/LVj/PbERgzAQn+aUC/wuhyaIdoQ+z/coGPjJWcqRe3JFmZUzR+seu/gfkC5vKq3t0UIvNxNnslpCNNnSRlm1D2utIFTHlh8FMJd6UwU6l+sXKPh75sVd+Hc7iPhP7s4C1cD0mRNUrVGNqZJOxS0aV7uULCmHbBeLWdD1ZkwagPAek7COWXmiGSecycW1HWK2NWIxy6dVAVQgomR1lwL6+OUh40SPoZhmRxM31mKdr1lI4uXH7TQpvGyV3wIdHgdK6wQk+3aF8uMNKKk65IUdSiKCnL/cVDxZhzHRqKYTRLAm8lewvACf7DQPqCFofNTkH/C/xnMq8ttC3jpo2s1fVwopUd9eKvyE2vdMMI="
+console.log(pj4Wtbc)
