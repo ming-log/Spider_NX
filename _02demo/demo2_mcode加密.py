@@ -18,7 +18,6 @@ with open('demo2_mcode加密.js', 'r', encoding='UTF-8') as f:
 
 mcode = execjs.compile(jscode).call('getResCode')
 
-
 import requests
 
 url = 'https://webapi.cninfo.com.cn/api/sysapi/p_sysapi1007'

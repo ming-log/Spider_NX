@@ -25,7 +25,6 @@ with open('demo1_sign加密.js', 'r', encoding='UTF-8') as f:
 sign_key = execjs.compile(jscode).call('h', sign)
 print(sign_key)
 
-
 # 接下来使用sign参数获取数据
 import requests
 

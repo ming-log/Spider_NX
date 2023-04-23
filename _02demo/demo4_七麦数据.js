@@ -2,16 +2,16 @@ function o(t) {
     var e, r = +new Date() - (1697 || H) - 1661224081041, a = [];
     var d = 'xyz517cda96abcd'
     a = (0,
-    v)(a),
-    a = (a += v + t[Jt][T](t[Mt], _)) + (v + r) + (v + 3),
-    e = (0,
-        v)((0,
-        h)(a, d))
+        v)(a),
+        a = (a += v + t[Jt][T](t[Mt], _)) + (v + r) + (v + 3),
+        e = (0,
+            v)((0,
+            h)(a, d))
     return e
 }
 
 function v(t) {
-    t = encodeURIComponent().replace(/%([0-9A-F]{2})/g, function(n, t) {
+    t = encodeURIComponent().replace(/%([0-9A-F]{2})/g, function (n, t) {
         return o(Y1 + t)
     });
     try {

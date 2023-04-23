@@ -8,6 +8,3 @@
 # 目标网站：https://www.qimai.cn/rank
 # 榜单数据
 # JS加密，网站改版变混淆，未解决
-
-
-

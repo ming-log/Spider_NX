@@ -15,4 +15,3 @@ data = '{"utm":"sites_group_front.188479ff.0.0.48148460d60811ed992ee5ef25d2e7eb"
 response = requests.post(url, headers=headers, data=data)
 
 print(response.text)
-

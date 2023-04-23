@@ -15,6 +15,3 @@ data = {
 
 response = requests.post(url, data=data, headers=headers)
 print(response.text)
-
-
-

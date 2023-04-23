@@ -10,7 +10,6 @@ import requests
 import execjs
 import json
 
-
 api = 'https://jzsc.mohurd.gov.cn/APi/webApi/dataservice/query/comp/list'
 
 params = {
