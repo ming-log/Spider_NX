@@ -24,8 +24,8 @@ with open('demo1_空气质量网_参数解密.js', 'r', encoding='utf-8') as f:
     jscode1 = f.read()
 
 mHTBGYKS9 = 'GETDAYDATA'
-oGX3TKciee = {'city': '武汉', 'month': '201312'}
-hrXZtrXfc = execjs.compile(jscode1).call('p0I8Eq2vSsJj4', mHTBGYKS9, oGX3TKciee)
+oGX3TKciee = {'city': '武汉', 'month': '201603'}
+hrXZtrXfc = execjs.compile(jscode1).call('plW4lZmjzlWMT', mHTBGYKS9, oGX3TKciee)
 print(hrXZtrXfc)
 
 url = 'https://www.aqistudy.cn/historydata/api/historyapi.php'
@@ -35,12 +35,6 @@ data = {
 }
 
 headers = {
-    'sec-ch-ua-mobile': '?0',
-    'sec-ch-ua-platform': "Windows",
-    'Sec-Fetch-Dest': 'empty',
-    'Sec-Fetch-Mode': 'cors',
-    'Sec-Fetch-Site': 'same-origin',
-    'Host': 'www.aqistudy.cn',
     'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36'
 }
 
@@ -49,7 +43,6 @@ res_key = requests.post(url, data=data, headers=headers, verify=False).text
 print(res_key)
 
 # 调用JS解密加密数据
-# 调用JS获取加密参数
 # with open('demo1_空气质量网_返回参数解密.js', 'r', encoding='utf-8') as f:
 #     jscode2 = f.read()
 #

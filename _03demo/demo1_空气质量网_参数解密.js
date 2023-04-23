@@ -1,3 +1,44 @@
+const  dckYN576ESnf = "olhVqQ5WBvsEFplY";//DESkey，可自定义
+const  dciDpkLDD9nW = "pbHwGfGn7DArQpV8";//密钥偏移量IV，可自定义
+
+var BASE64 = {
+    encrypt: function(text) {
+        var b = new Base64();
+        return b.encode(text);
+    },
+    decrypt: function(text) {
+        var b = new Base64();
+        return b.decode(text);
+    }
+};
+
+var DES = {
+ encrypt: function(text, key, iv){
+    var secretkey = (CryptoJS.MD5(key).toString()).substr(0, 16);
+    var secretiv = (CryptoJS.MD5(iv).toString()).substr(24, 8);
+    secretkey = CryptoJS.enc.Utf8.parse(secretkey);
+    secretiv = CryptoJS.enc.Utf8.parse(secretiv);
+    var result = CryptoJS.DES.encrypt(text, secretkey, {
+      iv: secretiv,
+      mode: CryptoJS.mode.CBC,
+      padding: CryptoJS.pad.Pkcs7
+    });
+    return result.toString();
+ },
+ decrypt: function(text, key, iv){
+    var secretkey = (CryptoJS.MD5(key).toString()).substr(0, 16);
+    var secretiv = (CryptoJS.MD5(iv).toString()).substr(24, 8);
+    secretkey = CryptoJS.enc.Utf8.parse(secretkey);
+    secretiv = CryptoJS.enc.Utf8.parse(secretiv);
+    var result = CryptoJS.DES.decrypt(text, secretkey, {
+      iv: secretiv,
+      mode: CryptoJS.mode.CBC,
+      padding: CryptoJS.pad.Pkcs7
+    });
+    return result.toString(CryptoJS.enc.Utf8);
+  }
+};
+
 function Base64() {
     _keyStr = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=",
         this.encode = function (a) {
@@ -1870,6 +1911,7 @@ CryptoJS.mode.ECB = function () {
 )();
 
 
+<<<<<<< HEAD
 const askjP0K0Ecjm = "aOaYoMoW7AwBSmxG";//AESkey，可自定义
 const asiLRMRDL9pV = "bXWosDHveISHgj1I";//密钥偏移量IV，可自定义
 
@@ -2089,19 +2131,44 @@ function sXYHJDFvLt8iFrIJ(mlgBoSfB0, o2GoICK0z9, cJV1q1vh9, po0O3oB) {
                     console.log(ocoJtw.errcode, ocoJtw.errmsg);
                 }
             }
+=======
+var plW4lZmjzlWMT = (function(){
+    function osj9iEZHJc(obj){
+        var newObject = {};
+        Object.keys(obj).sort().map(function(key){
+            newObject[key] = obj[key];
+>>>>>>> 4235f9f281eae91025afbc89011346ea0d2e54ab
         });
-    } else {
-        cJV1q1vh9(dVDuy);
+        return newObject;
     }
-}
+    return function(mB9b7M6tO, om4kVD){
+        var aZdp = '440fef06bb6b06f512e734f88a0a93f4';
+        var cUbnX = 'WEB';
+        var tvFAcof = new Date().getTime();
+
+        var pj4Wtbc = {
+          appId: aZdp,
+          method: mB9b7M6tO,
+          timestamp: tvFAcof,
+          clienttype: cUbnX,
+          object: om4kVD,
+          secret: hex_md5(aZdp + mB9b7M6tO + tvFAcof + cUbnX + JSON.stringify(osj9iEZHJc(om4kVD)))
+        };
+        pj4Wtbc = BASE64.encrypt(JSON.stringify(pj4Wtbc));
+        pj4Wtbc = DES.encrypt(pj4Wtbc, dckYN576ESnf, dciDpkLDD9nW);
+        return pj4Wtbc;
+    };
+    })();
 
 
+<<<<<<< HEAD
 mHTBGYKS9 = 'GETDAYDATA'
+=======
+mB9b7M6tO = 'GETDAYDATA'
 
-oGX3TKciee = {city: '武汉', month: '201302'}
+oN4hWX0iyo = {city: '武汉', month: '201608'}
+>>>>>>> 4235f9f281eae91025afbc89011346ea0d2e54ab
 
-var pbcsehF = pZE0VTC2VTGvLc(mHTBGYKS9, oGX3TKciee);
+var pj4Wtbc = plW4lZmjzlWMT(mB9b7M6tO, oN4hWX0iyo);
 
-console.log(pbcsehF)
-"QxN3/LVj/PbERgzAQn+aUC/wuhyaIdoQ+z/coGPjJWcqRe3JFmZUzR+seu/gfkC5vKq3t0UIvNxNnslpCNNnSRlm1D2utIFTHlh8FMJd6UwU6l+sXKPh75sVd+Hc7iPhP7s4C1cD0mRNUrVGNqZJO6oVsEFNYIBG3B1ys5B3R2QTxqTRfESxr6LA/NdN03yWwuAolSSf4dEUKT/yw/yEGHWumQqc/fbBQwA8O6xnR7sllqMOTZj85epRTwqZAoQBABNvpkqDIluvxJTtLUkxKO6tIyE03Vu+CV+L4iTncASqTtrZH867gcbJ/1IZlYNK0nUYiqX/5hXyD4n5Izsy0DsNCmzxVmggHxZEg3pQD9o="
-"QxN3/LVj/PbERgzAQn+aUC/wuhyaIdoQ+z/coGPjJWcqRe3JFmZUzR+seu/gfkC5vKq3t0UIvNxNnslpCNNnSRlm1D2utIFTHlh8FMJd6UwU6l+sXKPh75sVd+Hc7iPhP7s4C1cD0mRNUrVGNqZJOxS0aV7uULCmHbBeLWdD1ZkwagPAek7COWXmiGSecycW1HWK2NWIxy6dVAVQgomR1lwL6+OUh40SPoZhmRxM31mKdr1lI4uXH7TQpvGyV3wIdHgdK6wQk+3aF8uMNKKk65IUdSiKCnL/cVDxZhzHRqKYTRLAm8lewvACf7DQPqCFofNTkH/C/xnMq8ttC3jpo2s1fVwopUd9eKvyE2vdMMI="
+console.log(pj4Wtbc)
