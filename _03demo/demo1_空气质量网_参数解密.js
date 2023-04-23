@@ -1911,7 +1911,6 @@ CryptoJS.mode.ECB = function () {
 )();
 
 
-<<<<<<< HEAD
 const askjP0K0Ecjm = "aOaYoMoW7AwBSmxG";//AESkey，可自定义
 const asiLRMRDL9pV = "bXWosDHveISHgj1I";//密钥偏移量IV，可自定义
 
@@ -2131,13 +2130,16 @@ function sXYHJDFvLt8iFrIJ(mlgBoSfB0, o2GoICK0z9, cJV1q1vh9, po0O3oB) {
                     console.log(ocoJtw.errcode, ocoJtw.errmsg);
                 }
             }
-=======
+        })
+    }
+}
+
 var plW4lZmjzlWMT = (function(){
     function osj9iEZHJc(obj){
         var newObject = {};
         Object.keys(obj).sort().map(function(key){
             newObject[key] = obj[key];
->>>>>>> 4235f9f281eae91025afbc89011346ea0d2e54ab
+
         });
         return newObject;
     }
@@ -2160,15 +2162,3 @@ var plW4lZmjzlWMT = (function(){
     };
     })();
 
-
-<<<<<<< HEAD
-mHTBGYKS9 = 'GETDAYDATA'
-=======
-mB9b7M6tO = 'GETDAYDATA'
-
-oN4hWX0iyo = {city: '武汉', month: '201608'}
->>>>>>> 4235f9f281eae91025afbc89011346ea0d2e54ab
-
-var pj4Wtbc = plW4lZmjzlWMT(mB9b7M6tO, oN4hWX0iyo);
-
-console.log(pj4Wtbc)
