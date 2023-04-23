@@ -1,6 +1,3 @@
-window = global;
-var r = 320305.131321201
-
 function n(t, e) {
     for (var n = 0; n < e.length - 2; n += 3) {
         var r = e.charAt(n + 2);
