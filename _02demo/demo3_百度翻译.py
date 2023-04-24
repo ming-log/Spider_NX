@@ -47,7 +47,7 @@ def translation(query):
 
 
 if __name__ == '__main__':
-    query = '这个电影真好看！'
+    query = input('请输入要翻译的语句：')
     trans = translation(query)
     print('-' * 50)
     print(f'{query}\n翻译为:\n{trans}')
